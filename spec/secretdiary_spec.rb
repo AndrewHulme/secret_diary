@@ -14,20 +14,23 @@ describe SecretDiary do
     expect(subject.locked).to eq true
   end
 
+end
+
+describe Diary do
   describe "method add_entry" do
     it "checks that method add_entry initially throws an error" do
       expect { subject.add_entry("entry") }.to raise_error "Diary is locked!"
     end
 
     it "checks that method add_entry adds an entry when diary is unlocked" do
-      subject.unlock
+      subject.secret.unlock
       subject.add_entry("Test")
       expect(subject.body).to eq "Test"
     end
 
     it "checks the method add_entry throws an error when diary is locked again" do
-      subject.unlock
-      subject.lock
+      subject.secret.unlock
+      subject.secret.lock
       expect { subject.add_entry("entry") }.to raise_error "Diary is locked!"
     end
   end
@@ -38,17 +41,15 @@ describe SecretDiary do
     end
 
     it "checks the method get_entries gets the entries when diary is unlocked" do
-      subject.unlock
+      subject.secret.unlock
       subject.add_entry("Test")
       expect(subject.get_entries).to eq "Test"
     end
 
     it "checks the method get_entries throws an error when diary is locked again" do
-      subject.unlock
-      subject.lock
+      subject.secret.unlock
+      subject.secret.lock
       expect { subject.get_entries }.to raise_error "Diary is locked!"
     end
-
   end
-
 end

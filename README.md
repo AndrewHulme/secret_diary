@@ -13,5 +13,5 @@ To be able to add to my diary
 I want to be able to add entries to my diary once unlocked
 
 As the User
-To be able to view my diary 
+To be able to view my diary
 I want to be able to get entries to my diary once unlocked

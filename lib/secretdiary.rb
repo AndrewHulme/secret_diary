@@ -1,11 +1,10 @@
 class SecretDiary
 
-attr_accessor :locked
-attr_accessor :body
+  attr_accessor :locked
 
   def initialize
     @locked = true
-    @body = ""
+    #@diary = Diary.new
   end
 
   def lock
@@ -15,13 +14,23 @@ attr_accessor :body
   def unlock
     @locked = false
   end
+end
+
+
+class Diary
+  attr_accessor :body
+  attr_accessor :secret
+
+  def initialize
+    @body = ""
+    @secret = SecretDiary.new
+  end
 
   def add_entry(entry)
-    @locked == true ? (raise "Diary is locked!") : (@body << entry)
+    @secret.locked == true ? (raise "Diary is locked!") : (@body << entry)
   end
 
   def get_entries
-    @locked == true ? (raise "Diary is locked!") : (return @body)
+    @secret.locked == true ? (raise "Diary is locked!") : (return @body)
   end
-
 end
