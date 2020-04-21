@@ -1,7 +1,7 @@
 ## User Stories
 
 As the User
-To make my diary inaccessible to other
+To make my diary inaccessible to others
 I want to be able to to lock my diary
 
 As the User
